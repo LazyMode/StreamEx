@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>StreamEx.Await</id>
+        <id>StreamEx.CS</id>
         <version>0.0</version>
         <authors>Licshee</authors>
+        <projectUrl>https://github.com/OmniKits/StreamEx</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>-</description>
     </metadata>
     <files>
-        <file src="StreamEx.Await.cs" target="content\StreamEx.Await.cs" />
+        <file src="StreamEx.cs" target="content\StreamEx.cs" />
     </files>
 </package>
