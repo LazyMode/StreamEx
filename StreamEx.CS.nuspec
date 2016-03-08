@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>StreamEx.CS</id>
-        <version>0.0</version>
+        <version>0.1-Absolution</version>
         <authors>Licshee</authors>
         <projectUrl>https://github.com/OmniKits/StreamEx</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>-</description>
+        <dependencies>
+            <dependency id="BitTricks.CS" version="0.1-Absolution" />
+        </dependencies>
     </metadata>
     <files>
-        <file src="StreamEx.cs" target="content\StreamEx.cs" />
+        <file src="StreamEx\StreamEx.cs" target="content\StreamEx.cs" />
     </files>
 </package>

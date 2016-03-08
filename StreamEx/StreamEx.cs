@@ -27,4 +27,81 @@ static partial class StreamEx
 
         return read;
     }
+    public static byte ReadByteFailFast(this Stream source)
+    {
+        var r = source.ReadByte();
+
+        if (r < 0)
+            throw new EndOfStreamException();
+
+        return (byte)r;
+    }
+
+    public static void WriteUInt64via7(this Stream target, ulong value)
+    {
+        for (var i = 0; i < 8; i++)
+        {
+            if (value < 128)
+                break;
+
+            target.WriteByte((byte)(value & 0x7F | 0x80));
+            value >>= 7;
+        }
+        target.WriteByte((byte)value);
+    }
+    public static void WriteSInt64via7(this Stream target, long value)
+        => target.WriteUInt64via7(value.Zig());
+
+    public static void WriteUInt32via7(this Stream target, uint value)
+    {
+        for (var i = 0; i < 4; i++)
+        {
+            if (value < 128)
+                break;
+
+            target.WriteByte((byte)(value & 0x7F | 0x80));
+            value >>= 7;
+        }
+        target.WriteByte((byte)value);
+    }
+    public static void WriteSInt32via7(this Stream target, int value)
+        => target.WriteUInt32via7(value.Zig());
+
+    public static ulong ReadUInt64via7(this Stream source)
+    {
+        ulong tmp = 0;
+
+        for (var s = 0; s < 56; s += 7)
+        {
+            var b = source.ReadByteFailFast();
+
+            if (b < 128)
+                return tmp | (ulong)b << s;
+
+            tmp |= ((ulong)(b & 0x7F) << s);
+        }
+
+        return tmp | (ulong)source.ReadByteFailFast() << 56;
+    }
+    public static long ReadSInt64via7(this Stream source)
+        => source.ReadUInt64via7().Zag();
+
+    public static uint ReadUInt32via7(this Stream source)
+    {
+        uint tmp = 0;
+
+        for (var s = 0; s < 28; s += 7)
+        {
+            var b = source.ReadByteFailFast();
+
+            if (b < 128)
+                return tmp | (uint)b << s;
+
+            tmp |= ((uint)(b & 0x7F) << s);
+        }
+
+        return tmp | (uint)source.ReadByteFailFast() << 28;
+    }
+    public static int ReadSInt32via7(this Stream source)
+        => source.ReadUInt32via7().Zag();
 }

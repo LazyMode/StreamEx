@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{354DDFC6-EB3D-4B53-A071-315A5FD3FBDE}"
+	ProjectSection(SolutionItems) = preProject
+		StreamEx.Await.cs = StreamEx.Await.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamEx.Portable", "StreamEx.Portable\StreamEx.Portable.csproj", "{46F210F7-CDCB-43FD-A79E-BFEC116E944E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "StreamEx", "StreamEx\StreamEx.shproj", "{BF37BB6C-3D4C-4FA3-ADC6-7A87D7EDBD6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamEx.Tests", "StreamEx.Tests\StreamEx.Tests.csproj", "{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		StreamEx\StreamEx.projitems*{bf37bb6c-3d4c-4fa3-adc6-7a87d7edbd6a}*SharedItemsImports = 13
+		StreamEx\StreamEx.projitems*{46f210f7-cdcb-43fd-a79e-bfec116e944e}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46F210F7-CDCB-43FD-A79E-BFEC116E944E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F210F7-CDCB-43FD-A79E-BFEC116E944E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F210F7-CDCB-43FD-A79E-BFEC116E944E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F210F7-CDCB-43FD-A79E-BFEC116E944E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
