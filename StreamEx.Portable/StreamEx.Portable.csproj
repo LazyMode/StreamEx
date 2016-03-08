@@ -35,14 +35,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Compile Include="..\..\BitTricks\BitTricks.Portable\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="StreamEx.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="BitTricks, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BitTricks.0.1-Absolution\lib\BitTricks.dll</HintPath>
+    <Reference Include="BitTricks, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BitTricks.0.1-Aeon\lib\BitTricks.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
