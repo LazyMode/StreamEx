@@ -27,15 +27,6 @@ static partial class StreamEx
 
         return read;
     }
-    public static byte ReadByteFailFast(this Stream source)
-    {
-        var r = source.ReadByte();
-
-        if (r < 0)
-            throw new EndOfStreamException();
-
-        return (byte)r;
-    }
 
     public static void WriteUInt64via7(this Stream target, ulong value)
     {
@@ -69,11 +60,14 @@ static partial class StreamEx
 
     public static ulong ReadUInt64via7(this Stream source)
     {
+        int b;
         ulong tmp = 0;
 
         for (var s = 0; s < 56; s += 7)
         {
-            var b = source.ReadByteFailFast();
+            b = source.ReadByte();
+            if (b < 0)
+                throw new EndOfStreamException();
 
             if (b < 128)
                 return tmp | (ulong)b << s;
@@ -81,18 +75,25 @@ static partial class StreamEx
             tmp |= ((ulong)(b & 0x7F) << s);
         }
 
-        return tmp | (ulong)source.ReadByteFailFast() << 56;
+        b = source.ReadByte();
+        if (b < 0)
+            throw new EndOfStreamException();
+
+        return tmp | (ulong)b << 56;
     }
     public static long ReadSInt64via7(this Stream source)
         => source.ReadUInt64via7().Zag();
 
     public static uint ReadUInt32via7(this Stream source)
     {
+        int b;
         uint tmp = 0;
 
         for (var s = 0; s < 28; s += 7)
         {
-            var b = source.ReadByteFailFast();
+            b = source.ReadByte();
+            if (b < 0)
+                throw new EndOfStreamException();
 
             if (b < 128)
                 return tmp | (uint)b << s;
@@ -100,7 +101,11 @@ static partial class StreamEx
             tmp |= ((uint)(b & 0x7F) << s);
         }
 
-        return tmp | (uint)source.ReadByteFailFast() << 28;
+        b = source.ReadByte();
+        if (b < 0)
+            throw new EndOfStreamException();
+
+        return tmp | (uint)b << 28;
     }
     public static int ReadSInt32via7(this Stream source)
         => source.ReadUInt32via7().Zag();

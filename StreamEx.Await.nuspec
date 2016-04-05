@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
-    <id>StreamEx.CS</id>
+    <id>StreamEx.Await</id>
     <version>0.1-Algos</version>
     <authors>OmniKits</authors>
     <projectUrl>https://github.com/OmniKits/StreamEx</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <developmentDependency>true</developmentDependency>
     <description>-</description>
+    <dependencies>
+      <dependency id="StreamEx.Await.CS" version="[0.1-Algos]" />
+    </dependencies>
   </metadata>
-  <files>
-    <file src="StreamEx\StreamEx.cs" target="content\StreamEx.cs" />
-  </files>
+  <files />
 </package>

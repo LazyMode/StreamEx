@@ -38,16 +38,16 @@
     <Compile Include="StreamEx.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="BitTricks, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BitTricks.0.1-Aeon\lib\BitTricks.dll</HintPath>
+      <HintPath>..\packages\BitTricks.0.1-Algos\lib\BitTricks.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="..\StreamEx\StreamEx.projitems" Label="Shared" />
   <Import Project="..\StreamEx.AssemblyInfo\StreamEx.AssemblyInfo.projitems" Label="Shared" />
