@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>StreamEx.CS</id>
-    <version>0.1-Algos</version>
+    <version>0.1</version>
     <authors>OmniKits</authors>
     <projectUrl>https://github.com/OmniKits/StreamEx</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

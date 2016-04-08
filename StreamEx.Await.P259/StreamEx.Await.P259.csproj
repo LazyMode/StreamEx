@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BitTricks, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BitTricks.0.1-Algos\lib\BitTricks.dll</HintPath>
+      <HintPath>..\packages\BitTricks.0.1\lib\BitTricks.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -47,7 +47,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\StreamEx.Await\StreamEx.Await.projitems" Label="Shared" />
-  <Import Project="..\StreamEx.AssemblyInfo\StreamEx.AssemblyInfo.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
