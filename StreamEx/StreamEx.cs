@@ -1,8 +1,102 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
-static partial class StreamEx
+#if EXPOSE_EVERYTHING || EXPOSE_STREAMEX
+public
+#endif
+static class StreamEx
 {
+    private static readonly char[] LineEnds = new[] { '\n', '\r' };
+
+    public static char? ReadProtocolLineWithEnd(this Stream source, StringBuilder sb, bool skipFirstLineFeed = false)
+    {
+        var b = source.ReadByte();
+        if (skipFirstLineFeed && b == '\n')
+            b = source.ReadByte();
+
+        for (; b >= 0; b = source.ReadByte())
+        {
+            var c = (char)b;
+            sb.Append(c);
+
+            switch (c)
+            {
+                case '\n':
+                    return '\n';
+                case '\r':
+                    if (source.CanSeek)
+                    {
+                        var pos = source.Position;
+                        b = source.ReadByte();
+                        if (b >= 0)
+                        {
+                            c = (char)b;
+                            if (c == '\n')
+                            {
+                                sb.Append('\n');
+                                return '\n';
+                            }
+                            source.Position = pos;
+                        }
+                    }
+                    return '\r';
+            }
+        }
+
+        return null;
+    }
+
+    public static string ReadProtocolLineWithEnd(this Stream source, bool skipFirstLineFeed = false)
+    {
+        var sb = new StringBuilder();
+        source.ReadProtocolLineWithEnd(sb, skipFirstLineFeed);
+        return sb.ToString();
+    }
+
+    public static char? ReadProtocolLine(this Stream source, StringBuilder sb, bool skipFirstLineFeed = false)
+    {
+        var b = source.ReadByte();
+        if (skipFirstLineFeed && b == '\n')
+            b = source.ReadByte();
+
+        for (; b >= 0; b = source.ReadByte())
+        {
+            var c = (char)b;
+
+            switch (c)
+            {
+                case '\n':
+                    return '\n';
+                case '\r':
+                    if (source.CanSeek)
+                    {
+                        var pos = source.Position;
+                        b = source.ReadByte();
+                        if (b >= 0)
+                        {
+                            c = (char)b;
+                            if (c == '\n')
+                                return '\n';
+                            source.Position = pos;
+                        }
+                    }
+                    return '\r';
+            }
+
+            sb.Append(c);
+        }
+
+        return null;
+    }
+
+    public static string ReadProtocolLine(this Stream source, bool skipFirstLineFeed = false)
+    {
+        var sb = new StringBuilder();
+        source.ReadProtocolLine(sb, skipFirstLineFeed);
+        return sb.ToString();
+    }
+
     public static int ReadBlock(this Stream source, byte[] buffer, int offset, int count)
     {
         var len = buffer.Length;
